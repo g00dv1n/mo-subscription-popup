@@ -19,7 +19,9 @@ async function run() {
     }
     const { value: [name, email] } = subs;
 
-    await Mautic.sendSubscription(name, email);
+    try {
+        await Mautic.sendSubscription(name, email);
+    } catch {}
 
     gaHelper.fireSubscription();
 
